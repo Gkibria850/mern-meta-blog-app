@@ -7,10 +7,11 @@ require('dotenv').config();
 
 
 // HTTP REQUEST METHOD GET, POST, PUT, DELETE
+// routes
+const blogRoutes = require('./src/routes/blog.routes')
+app.use('/blogs', blogRoutes)
 
-//mongoose gkibria99999  1HTgzpCYk2ZoYAn1
-//mongodb+srv://gkibria99999:1HTgzpCYk2ZoYAn1@mern-meta-blog-app.ph8fb.mongodb.net/?retryWrites=true&w=majority&appName=mern-meta-blog-app
-
+// mongoose configuration
 async function main() {
     await mongoose.connect(process.env.DB_URL);
     app.get('/', (req, res) => {
