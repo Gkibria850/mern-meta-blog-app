@@ -1,0 +1,79 @@
+PS F:\new-meta-blog-app> cd server
+PS F:\new-meta-blog-app\server> npm init   
+This utility will walk you through creating a package.json file.
+It only covers the most common items, and tries to guess sensible defaults.
+See `npm help init` for definitive documentation on these fields
+and exactly what they do.
+
+Use `npm install <pkg>` afterwards to install a package and
+save it as a dependency in the package.json file.
+
+Press ^C at any time to quit.
+package name: (server) meta-blog-server
+version: (1.0.0)
+description:
+entry point: (index.js)
+test command:
+git repository:
+keywords:
+author: kibria
+About to write to F:\new-meta-blog-app\server\package.json:
+
+{
+  "name": "meta-blog-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "kibria",
+  "license": "ISC"
+}
+
+
+Is this OK? (yes) yes
+//secound Stap
+PS F:\new-meta-bl
+
+Wrote to F:\new-meta-blog-app\server\package.json:
+
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"   
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
+
+
+PS F:\new-meta-blog-app\server> npm install express
+//server auto matich run kortay (npm i nodemon) or npm install -g nodemon # or using yarn: yarn global add nodemon install kortay hby
+//npm install --save-dev nodemon # or using yarn: yarn add nodemon -D
+//nodemon index.js  commend
+ "scripts": {
+    "start" : "node index.js",
+    "start:dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+
+(
+//momgoose instillation //Username:gkibria850, password:IWbuKyaVgn0n0svc
+//mongodb+srv://gkibria850:IWbuKyaVgn0n0svc@meta-blog-app.effit.mongodb.net/?retryWrites=true&w=majority&appName=meta-blog-app
+////103.218.189.14/32 (includes your current IP address) user:kibria password:nW1LRwelZOoR8uPb)
+  //install the mongoes npm install mongoose --save
+  //https://www.npmjs.com/package/dotenv help the massking password(npm i dotenv)
+
+  // post new blog
+  router.post('/add-post', async(req, res) => {
+    // create new blog here and save to database
+    //console.log(req.body);
+    const{title,description} = req.body
+    console.log(title)
+    //res.send('New blog created successfully!')
+  })
