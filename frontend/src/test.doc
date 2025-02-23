@@ -77,3 +77,13 @@ PS F:\new-meta-blog-app\server> npm install express
     console.log(title)
     //res.send('New blog created successfully!')
   })
+
+  //https://mongoosejs.com/docs/guide.html
+  
+  router.post('/add-post', async(req, res) => {
+   // console.log(req.body)
+    // const { title, description} = req.body
+    // console.log(title)
+    const newBlog = new Blog({
+      ...req.body
+    })

@@ -5,7 +5,8 @@ const mongoose = require('mongoose');
 
 require('dotenv').config();
 
-
+// middleware
+app.use(express.json())
 // HTTP REQUEST METHOD GET, POST, PUT, DELETE
 // routes
 const blogRoutes = require('./src/routes/blog.routes')
