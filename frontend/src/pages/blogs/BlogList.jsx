@@ -8,11 +8,12 @@ const BlogList = () => {
     // Fetch blogs from API or local storage
     useEffect(() =>
     {
-        fetch('blogs.json').then(response => response.json())
-        .then(data => setBlogs(data))
+        fetch('http://localhost:8000/blogs').then(response => response.json())
+        .then(data => setBlogs(data.blogs))
         .catch(error=> console.error("Failed to fetch:" + error))
         
     },[]);
+    console.log(blogs)
 
     //filter blogs on the title
     const filteredBlogs = blogs.filter(blog => 

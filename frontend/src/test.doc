@@ -1,3 +1,7 @@
+use frontend (https://axios-http.com/docs/intro(npm install axios))
+
+
+
 PS F:\new-meta-blog-app> cd server
 PS F:\new-meta-blog-app\server> npm init   
 This utility will walk you through creating a package.json file.
@@ -153,6 +157,10 @@ router.get('/',  async(req, res) => {
     }
      
         
-  })
 
 module.exports = router;
+  })
+//Access to fetch at 'http://localhost:8000/blogs' from origin 'http://localhost:5173' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.(solver https://expressjs.com/en/resources/middleware/cors.html(npm install cors) server=>index.js=>const cors = require('cors'), 
+// middleware
+app.use(express.json())
+app.use(cors()))

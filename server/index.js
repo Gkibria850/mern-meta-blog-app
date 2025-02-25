@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const cors = require('cors')
 const port = process.env.PORT || 8000;
 const mongoose = require('mongoose');
 
@@ -7,6 +8,7 @@ require('dotenv').config();
 
 // middleware
 app.use(express.json())
+app.use(cors())
 // HTTP REQUEST METHOD GET, POST, PUT, DELETE
 // routes
 const blogRoutes = require('./src/routes/blog.routes')

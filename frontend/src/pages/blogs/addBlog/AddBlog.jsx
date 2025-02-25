@@ -3,6 +3,7 @@ import contactImg from "../../../assets/contact-animation.gif"
 import InputField from './InputField'
 import TextAreaField from './TextAreaField'
 import { useForm } from "react-hook-form"
+import axios from 'axios'
 
 const AddBlog = () => {
     const {
@@ -10,7 +11,7 @@ const AddBlog = () => {
         handleSubmit,
         formState: { errors },
       } = useForm();
-      const onSubmit = data => {
+      const onSubmit = async(data) => {
         const blogData= {
             title: data.title,
             description: data.description,
@@ -18,10 +19,17 @@ const AddBlog = () => {
             author: {
                 name: data.authorName,
                 image: data.authorImage
-            },
+            }
         }
-        console.log(blogData);
-    };
+        //console.log(blogData);
+        try{
+          const response = await axios.post(`http://localhost:8000/blogs/add-post`, blogData)
+          console.log(response.data)
+
+                  } catch(error){
+                    console.log("Error posting a new blog",error)
+                  }
+              };
   return (
     <div className='container max-w-7xl mx-auto px-4 py-24'>
         <h2 className='text-2xl font-bold mb-6'>Add New blog</h2>
