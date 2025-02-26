@@ -25,6 +25,13 @@ const AddBlog = () => {
         try{
           const response = await axios.post(`http://localhost:8000/blogs/add-post`, blogData)
           console.log(response.data)
+              if(response.status === 200){
+                alert("Blog added successfully")
+                reset()
+                } else{
+                alert("Error adding blog")
+      
+              }
 
                   } catch(error){
                     console.log("Error posting a new blog",error)

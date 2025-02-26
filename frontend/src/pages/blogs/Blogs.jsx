@@ -4,7 +4,7 @@ import BlogList from './BlogList'
 
 const Blogs = () => {
   return (
-    <section className='container max-w-7xl px-4 mx-auto text-primary py-3'>
+    <section className='container max-w-7xl px-4 mx-auto  py-3'>
       <Banner/>
       <BlogList/>
 

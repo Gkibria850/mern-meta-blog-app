@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import axios  from 'axios';
+
 
 const ManageBlogs = () => {
     const [blogs, setBlogs] = useState([]);
@@ -11,6 +13,18 @@ const ManageBlogs = () => {
             
         },[]);
         //console.log('blogs')
+        const handleDelete = async (id) => {
+            if(window.confirm('Are you sure you want to delete this blog?')){
+                try {
+                    await axios.delete(`http://localhost:8000/blogs/${id}`);
+                    setBlogs(prevBlogs => prevBlogs.filter(blog => blog._id !== id));
+                    alert("Successfully deleted");
+                } catch (error) {
+                    console.error("Error deleting the blog:", error);
+                }
+            }
+           
+        };
 
   return (
     
@@ -75,7 +89,7 @@ const ManageBlogs = () => {
                                                     Edit
                                                 </Link>
                                                 <Link  className='bg-red-500 text-white px-2 py-1 hover:bg-red-600'>
-                                                <button>Delete</button>
+                                                <button onClick={() => handleDelete(blog?._id)}>Delete</button>
                                                 </Link>
                                                
                                             </td>

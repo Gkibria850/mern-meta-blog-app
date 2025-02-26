@@ -1,13 +1,35 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form';
 import InputField from '../addBlog/InputField';
 import TextAreaField from '../addBlog/TextAreaField';
 import contactImg from "../../../assets/contact-animation.gif"
-
+import { useNavigate, useParams } from 'react-router-dom';
+import axios  from 'axios';
 
 const UpdateBlog = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm();
-  const onSubmit = data => {
+  const{id} = useParams();
+  //console.log(id);
+  const navigate = useNavigate();
+  const { register, handleSubmit,reset, setValue, formState: { errors } } = useForm();
+  useEffect(() => {
+    const fetchSingleBlog = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8000/blogs/${id}`);
+        console.log(response.data.blog)
+        const blog = response.data.blog
+        setValue('title', response.data.blog?.title);
+        setValue('description', response.data.blog?.description);
+        setValue('image', response.data.blog?.image);
+        setValue('authorName', response.data.blog?.author.name);
+        setValue('authorImage', response.data.blog?.author.image);
+      } catch (error) {
+        console.error("Failed to fetch single blog",error);
+      }
+    }
+    fetchSingleBlog();
+
+  },[]);
+  const onSubmit = async (data) => {
     const blogData = {
         title: data.title,
         description: data.description,
@@ -16,6 +38,17 @@ const UpdateBlog = () => {
             name: data.authorName,
             image: data.authorImage
         }
+    }
+    try{
+      const response = await axios.put(`http://localhost:8000/blogs/${id}`, blogData);
+      console.log(response.status)
+      if(response.status ===200){
+        alert("Blog updated successfully")
+      }
+      reset();
+      navigate('/')
+    }catch(error){
+      console.log("Error updating blog Data",error)
     }
 
     console.log(blogData)
