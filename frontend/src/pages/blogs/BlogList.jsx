@@ -1,15 +1,21 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import BlogCard from './BlogCard';
+import { BlogContext } from '../../context/BlogContext';
+import Loading from '../../components/Loading'
 
 const BlogList = () => {
-    const[searchTerm] = useState('');//todo: use blog context
+
+    const [isLoading, setIsLoading] = useState(true)
+    const{searchTerm} = useContext(BlogContext)
     const [blogs, setBlogs] = useState([]);
     const[showBlogs, setshowBlogs] = useState(6);
     // Fetch blogs from API or local storage
     useEffect(() =>
     {
         fetch('http://localhost:8000/blogs').then(response => response.json())
-        .then(data => setBlogs(data.blogs))
+        .then(data => {
+            setBlogs(data.blogs)
+            setIsLoading(false)})
         .catch(error=> console.error("Failed to fetch:" + error))
         
     },[]);
@@ -32,6 +38,7 @@ const BlogList = () => {
 
         }
     }
+    if(isLoading) return <Loading/>
   return (
     <div className='container mx-auto'>
         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8'>

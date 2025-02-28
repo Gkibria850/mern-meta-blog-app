@@ -1,10 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Reveal from '../../animation/Reveal'
 
 const BlogCard = ({blog}) => {
     //console.log(blog)
   return (
-    <div className='border rounded-lg p-4 bg-white shadow-md'>
+   <Reveal>
+     <div className='border rounded-lg p-4 bg-white shadow-md'>
          <Link to={`/blogs/${blog?._id}`}>
         <img src={blog.image} alt={blog.title} className='w-full object-cover h-48 mb-4 hover:scale-105 transition-all duration-200 cursor-pointer rounded-md' />
         </Link>
@@ -30,6 +32,7 @@ const BlogCard = ({blog}) => {
             </div>
         </div>
     </div>
+   </Reveal>
   )
 }
 

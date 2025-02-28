@@ -1,17 +1,21 @@
 import React from 'react'
 import NewsLetter from '../home/NewsLetter'
+import Reveal from '../../animation/Reveal'
 
 const About = () => {
   return (
     <section className='pt-28 pb-5'>
         <div className='container max-w-7xl px-4 mx-auto '>
             {/* hero */}
-            <div className='text-center mb-20'>
-                <h1 className='text-4xl font-semibold'>About Us</h1>
-                <p className='mt-5'>Learn more about our company, our mission, and the team that drives us forward. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum nam libero obcaecati. Earum veniam debitis, repellendus omnis fugit sequi. Quia quaerat voluptatem, dolores vel officiis nulla corrupti nemo dolorem omnis?</p>
-            </div>
+            <Reveal>
+                <div className='text-center mb-20'>
+                    <h1 className='text-4xl font-semibold'>About Us</h1>
+                    <p className='mt-5'>Learn more about our company, our mission, and the team that drives us forward. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum nam libero obcaecati. Earum veniam debitis, repellendus omnis fugit sequi. Quia quaerat voluptatem, dolores vel officiis nulla corrupti nemo dolorem omnis?</p>
+                </div>
+            </Reveal>
 
             {/* mission */}
+            <Reveal>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-20'>
                 <div>
                     <h2 className='text-3xl font-semibold mb-4'>Our Mission</h2>
@@ -22,8 +26,10 @@ const About = () => {
                     <img src="https://images.unsplash.com/photo-1521316730702-829a8e30dfd0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" className='w-full md:h-96 rounded-lg shadow-lg hover:scale-95 transition-all duration-200' />
                 </div>
             </div>
+            </Reveal>
 
             {/* vission */}
+            <Reveal>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-20'>
                 <div className='order-1 md:order-2'>
                     <h2 className='text-3xl font-semibold mb-4'>Our Vission</h2>
@@ -35,8 +41,10 @@ const About = () => {
                 </div>
             </div>
 
+            </Reveal>
             {/* team section */}
-            <div>
+           <Reveal>
+           <div>
             <h2 className='text-3xl font-semibold text-center mb-12'>Meet Our Team</h2>
             <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8'>
                 <div className='bg-white p-6 rounded-lg shadow-lg text-center hover:scale-95 transition-all duration-200 cursor-pointer'>
@@ -61,6 +69,8 @@ const About = () => {
                 </div>
             </div>
             </div>
+           </Reveal>
+            
 
             <NewsLetter/>
         </div>
